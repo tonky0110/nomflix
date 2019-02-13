@@ -23,7 +23,7 @@ export default class HomeContainer extends React.Component {
 				popular,
 			});
 		}catch{
-			this.setState({ error: "Can't find movies information."});
+			this.setState({ error: "Can't find movie information."});
 		}finally{
 			this.setState({ loading: false });
 		}
