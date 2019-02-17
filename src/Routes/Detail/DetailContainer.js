@@ -25,7 +25,7 @@ export default class DetailContainer extends React.Component {
 		}
 		try{
 			const { data: result } = isMovie ? await moviesApi.movieDetail(parsedId) : await tvApi.showDetail(parsedId);
-			console.log(result);
+			this.setState({result});
 		}catch{
 			this.setState({ error: "Cant't find anything."});
 		}finally{
