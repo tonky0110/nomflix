@@ -8,7 +8,7 @@ export default class TVContainer extends React.Component {
 		popular: null,
 		airingToday: null,
 		error: null,
-		loading: false
+		loading: true
 	};
 
 	componentDidMount = async () => {
