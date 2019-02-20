@@ -17,6 +17,7 @@ export default class HomeContainer extends React.Component {
 			const {data: {results: nowPlaying}} = await moviesApi.nowPlaying();
 			const {data: {results: upcoming}} = await moviesApi.upcoming();
 			const {data: {results: popular}} = await moviesApi.popular();
+			// throw Error();
 			this.setState({
 				nowPlaying,
 				upcoming,

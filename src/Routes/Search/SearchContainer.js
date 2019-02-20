@@ -30,6 +30,7 @@ export default class SearchContainer extends React.Component {
 		try {
 			const { data: { results: movieResults } } = await moviesApi.search(searchTerm);
 			const { data: { results: tvResults } } = await tvApi.search(searchTerm);
+			// throw Error();
 			this.setState({
 				movieResults,
 				tvResults
