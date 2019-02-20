@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import Section from 'Components/Section';
 import Message from 'Components/Message';
+import Poster from 'Components/Poster';
 
 const Container = styled.div`padding: 0px 20px;`;
 
@@ -34,13 +35,52 @@ const SearchPresenter = ({ movieResults, tvResults, searchTerm, error, handleSub
 		{movieResults &&
 			movieResults.length > 0 && (
 				<Section title={'Movie Results'}>
-					{movieResults.map((movie) => <span key={movie.id}>{movie.title}</span>)}
+					{movieResults.map((movie) => {
+						const {
+							id,
+							poster_path: imageUrl,
+							original_title: title,
+							vote_average: rating,
+							release_date: year
+						} = movie;
+						return (
+							<Poster
+								key={id}
+								id={id}
+								imageUrl={imageUrl}
+								title={title}
+								rating={rating}
+								year={year && year.substring(0, 4)}
+								isMovie={true}
+							/>
+						);
+					})}
 				</Section>
 			)}
 		{tvResults &&
 			tvResults.length > 0 && (
 				<Section title={'TV Show Results'}>
-					{tvResults.map((show) => <span key={show.id}>{show.name}</span>)}
+					{tvResults.map((show) => {
+						const {
+							id,
+							original_name: title,
+							poster_path: imageUrl,
+							vote_average: rating,
+							first_air_date: year,
+							isMovie = false
+						} = show;
+						return (
+							<Poster
+								key={id}
+								id={id}
+								title={title}
+								imageUrl={imageUrl}
+								rating={rating}
+								year={year && year.substring(0, 4)}
+								isMovie={isMovie}
+							/>
+						)
+					})}
 				</Section>
 			)}
 		{error && <Message text={error} color={'#e74c3c'} />}

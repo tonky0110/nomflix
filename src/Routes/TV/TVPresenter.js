@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import Section from 'Components/Section';
 import Message from 'Components/Message';
+import Poster from 'Components/Poster';
 
 const Container = styled.div`padding: 10px;`;
 
@@ -15,17 +16,79 @@ const TVPresenter = ({ topRated, popular, airingToday, error, loading }) =>
 			{topRated &&
 			topRated.length && (
 				<Section title={'Top Rated Show'}>
-					{topRated.map((show) => <span key={show.id}>{show.name}</span>)}
+					{topRated.map((show) => {
+						const {
+							id,
+							original_name: title,
+							poster_path: imageUrl,
+							vote_average: rating,
+							first_air_date: year,
+							isMovie = false
+						} = show;
+						return (
+							<Poster
+								key={id}
+								id={id}
+								title={title}
+								imageUrl={imageUrl}
+								rating={rating}
+								year={year && year.substring(0, 4)}
+								isMovie={isMovie}
+							/>
+						);
+					})}
 				</Section>
 			)}
 			{popular &&
 			popular.length && (
-				<Section title="Popular Show">{popular.map((show) => <span key={show.id}>{show.name}</span>)}</Section>
+				<Section title="Popular Show">
+					{popular.map((show) => {
+						const {
+							id,
+							original_name: title,
+							poster_path: imageUrl,
+							vote_average: rating,
+							first_air_date: year,
+							isMovie = false
+						} = show;
+						return (
+							<Poster
+								key={id}
+								id={id}
+								title={title}
+								imageUrl={imageUrl}
+								rating={rating}
+								year={year && year.substring(0, 4)}
+								isMovie={isMovie}
+							/>
+						);
+					})}
+				</Section>
 			)}
 			{airingToday &&
 			airingToday.length && (
 				<Section title={'Airing Today Show'}>
-					{airingToday.map((show) => <span key={show.id}>{show.name}</span>)}
+					{airingToday.map((show) => {
+						const {
+							id,
+							original_name: title,
+							poster_path: imageUrl,
+							vote_average: rating,
+							first_air_date: year,
+							isMovie = false
+						} = show;
+						return (
+							<Poster
+								key={id}
+								id={id}
+								title={title}
+								imageUrl={imageUrl}
+								rating={rating}
+								year={year && year.substring(0, 4)}
+								isMovie={isMovie}
+							/>
+						);
+					})}
 				</Section>
 			)}
 			{error && <Message text={error} color={'#e74c3c'} />}

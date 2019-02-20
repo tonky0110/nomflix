@@ -17,14 +17,21 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
 			nowPlaying.length > 0 && (
 				<Section title={'Now Playing Movie'}>
 					{nowPlaying.map((movie) => {
-						const { id, imageUrl, title, rating, year } = movie;
+						const {
+							id,
+							poster_path: imageUrl,
+							original_title: title,
+							vote_average: rating,
+							release_date: year
+						} = movie;
 						return (
 							<Poster
+								key={id}
 								id={id}
 								imageUrl={imageUrl}
 								title={title}
 								rating={rating}
-								year={year}
+								year={year && year.substring(0, 4)}
 								isMovie={true}
 							/>
 						);
@@ -35,14 +42,21 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
 			upcoming.length > 0 && (
 				<Section title={'Upcoming Movies'}>
 					{upcoming.map((movie) => {
-						const { id, imageUrl, title, rating, year } = movie;
+						const {
+							id,
+							poster_path: imageUrl,
+							original_title: title,
+							vote_average: rating,
+							release_date: year
+						} = movie;
 						return (
 							<Poster
+								key={id}
 								id={id}
 								imageUrl={imageUrl}
 								title={title}
 								rating={rating}
-								year={year}
+								year={year && year.substring(0, 4)}
 								isMovie={true}
 							/>
 						);
@@ -53,14 +67,21 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
 			popular.length > 0 && (
 				<Section title={'Popular Movie'}>
 					{popular.map((movie) => {
-						const { id, imageUrl, title, rating, year } = movie;
+						const {
+							id,
+							poster_path: imageUrl,
+							original_title: title,
+							vote_average: rating,
+							release_date: year
+						} = movie;
 						return (
 							<Poster
+								key={id}
 								id={id}
 								imageUrl={imageUrl}
 								title={title}
 								rating={rating}
-								year={year}
+								year={year && year.substring(0, 4)}
 								isMovie={true}
 							/>
 						);
