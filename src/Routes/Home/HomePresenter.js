@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 import Section from 'Components/Section';
+import Poster from 'Components/Poster';
 
 const Container = styled.div``;
 
@@ -15,19 +16,55 @@ const HomePresenter = ({ nowPlaying, upcoming, popular, error, loading }) =>
 			{nowPlaying &&
 			nowPlaying.length > 0 && (
 				<Section title={'Now Playing Movie'}>
-					{nowPlaying.map((movie) => <span id={movie.id}>{movie.title}</span>)}
+					{nowPlaying.map((movie) => {
+						const { id, imageUrl, title, rating, year } = movie;
+						return (
+							<Poster
+								id={id}
+								imageUrl={imageUrl}
+								title={title}
+								rating={rating}
+								year={year}
+								isMovie={true}
+							/>
+						);
+					})}
 				</Section>
 			)}
 			{upcoming &&
 			upcoming.length > 0 && (
 				<Section title={'Upcoming Movies'}>
-					{upcoming.map((movie) => <span id={movie.id}>{movie.title}</span>)}
+					{upcoming.map((movie) => {
+						const { id, imageUrl, title, rating, year } = movie;
+						return (
+							<Poster
+								id={id}
+								imageUrl={imageUrl}
+								title={title}
+								rating={rating}
+								year={year}
+								isMovie={true}
+							/>
+						);
+					})}
 				</Section>
 			)}
 			{popular &&
 			popular.length > 0 && (
 				<Section title={'Popular Movie'}>
-					{popular.map((movie) => <span id={movie.id}>{movie.title}</span>)}
+					{popular.map((movie) => {
+						const { id, imageUrl, title, rating, year } = movie;
+						return (
+							<Poster
+								id={id}
+								imageUrl={imageUrl}
+								title={title}
+								rating={rating}
+								year={year}
+								isMovie={true}
+							/>
+						);
+					})}
 				</Section>
 			)}
 			{error && <Message text={error} color={'#e74c3c'} />}
