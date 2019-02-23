@@ -12,7 +12,7 @@ export default class DetailContainer extends React.Component {
 		this.state = {
 			result: null,
 			error: null,
-			loading: false,
+			loading: true,
 			isMovie: pathname.includes('/movie/')
 		};
 	}
@@ -34,8 +34,7 @@ export default class DetailContainer extends React.Component {
 	};
 
 	render() {
-		const { result, error, loading } = -this.state;
-		console.log(this.state);
+		const { result, error, loading } = this.state;
 		return <DetailPresenter result={result} error={error} loading={loading} />;
 	}
 }
